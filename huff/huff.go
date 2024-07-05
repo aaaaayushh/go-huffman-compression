@@ -63,19 +63,13 @@ func (tree *Tree) Root() BaseNode {
 func (tree *Tree) Weight() int {
 	return tree.root.Weight()
 }
-func (tree *Tree) CompareTo(other *Tree) int {
-	if tree.Weight() < other.Weight() {
-		return -1
-	} else if tree.Weight() == other.Weight() {
-		return 0
-	} else {
-		return 1
-	}
-}
 
 // HuffmanHeap is a min-heap of HuffTree pointers
 type HuffmanHeap []*Tree
 
+//By implementing these methods, the HuffmanHeap type satisfies the heap.Interface, allowing it to be used with Go's
+//heap package. This enables efficient selection of the two lowest-weight trees at each step of the Huffman tree
+//construction process.
 func (h *HuffmanHeap) Len() int           { return len(*h) }
 func (h *HuffmanHeap) Less(i, j int) bool { return (*h)[i].Weight() < (*h)[j].Weight() }
 func (h *HuffmanHeap) Swap(i, j int)      { (*h)[i], (*h)[j] = (*h)[j], (*h)[i] }

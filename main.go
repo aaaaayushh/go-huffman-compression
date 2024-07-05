@@ -72,10 +72,6 @@ func main() {
 
 	// declare a map to store the frequency of each character in the file
 	freqMap := buildFreqMap(file)
-	//
-	//for char, freq := range freqMap {
-	//	fmt.Println("Char:", char, "\tFrequency:", freq)
-	//}
 
 	// build a huffman tree with the freqMap
 	huffTree := huff.BuildHuffmanTree(freqMap)
